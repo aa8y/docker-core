@@ -1,0 +1,14 @@
+defaults:
+  parameters:
+    repository: aa8y/core
+  templates:
+    build: docker build -t {repository}:{tag} {context}
+    push: docker push {repository}:{tag}
+contexts:
+  alpine:
+    tags:
+      alpine:
+      latest:
+  jdk8:
+    tags:
+      jdk8:
