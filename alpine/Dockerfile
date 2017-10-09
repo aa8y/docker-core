@@ -18,8 +18,9 @@ RUN addgroup -g 9999 docker && \
 
 # Create a 'app' directory to house application specific code when this image or one of its'
 # children are being used as a base image for running applications/tests.
-RUN mkdir -p /usr/src/app && \
-    chown -R docker:docker /usr/src/app
+ENV APP_DIR /usr/src/app
+RUN mkdir -p $APP_DIR && \
+    chown -R docker:docker $APP_DIR
 
 # Switch to the user 'docker'.
 USER docker
