@@ -6,7 +6,7 @@ This image is inspired from `Dockerfile` for the [Instructure Core](https://gith
 
 ## Tags
 
-The tags are `alpine`, `jdk8` and `latest` (same as `alpine`).
+The tags are `alpine`, `jdk8`, `python2` and `latest` (same as `alpine`).
 
 ## Usage
 
