@@ -1,4 +1,4 @@
-FROM alpine:3.7
+FROM node:9-alpine
 
 MAINTAINER Arun Allamsetty <arun.allamsetty@gmail.com>
 

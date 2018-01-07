@@ -1,4 +1,4 @@
-FROM alpine:3.7
+FROM python:2-alpine3.7
 
 MAINTAINER Arun Allamsetty <arun.allamsetty@gmail.com>
 

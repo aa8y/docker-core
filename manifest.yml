@@ -1,7 +1,7 @@
 parameters:
   repository: aa8y/core
 templates:
-  build: docker build -t {{{repository}}}:{{tag}} {{context}}
+  build: docker build -t {{{repository}}}:{{tag}} {{{context}}}
   push: docker push {{{repository}}}:{{tag}}
   test: docker run --rm {{{repository}}}:{{tag}} {{{run}}}
 contexts:
@@ -9,11 +9,23 @@ contexts:
     tags:
       alpine:
         run: cat /etc/alpine-release
-  jdk8:
+  jdk/7:
+    tags:
+      jdk7:
+        run: java -version
+  jdk/8:
     tags:
       jdk8:
         run: java -version
-  python2:
+  node/9:
+    tags:
+      node9:
+        run: node --version
+  python/2:
     tags:
       python2:
+        run: python --version
+  python/3:
+    tags:
+      python3:
         run: python --version
