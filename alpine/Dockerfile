@@ -5,10 +5,14 @@ MAINTAINER Arun Allamsetty <arun.allamsetty@gmail.com>
 ENV USER docker
 ENV USERNAME "Docker User"
 
-# Install 'bash' as many installations require that to run. 'shadow' provides user modification
-# functions which we use.
+# 'bash' is a dependency for many installations.
+# 'git' is required by CircleCI for cloning repositories.
+# 'openssh' is required by CircleCI for cloning repositories through SSH.
+# 'shadow' provides user modification functions which we use.
 RUN apk add --no-cache --update \
       bash \
+      git \
+      openssh \
       shadow && \
     rm -rf /var/cache/apk/*
 
