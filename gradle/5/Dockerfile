@@ -1,4 +1,4 @@
-FROM openjdk:7-jdk-alpine3.8
+FROM gradle:5.1-jdk8-alpine
 
 MAINTAINER Arun Allamsetty <arun.allamsetty@gmail.com>
 

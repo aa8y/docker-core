@@ -5,6 +5,9 @@ MAINTAINER Arun Allamsetty <arun.allamsetty@gmail.com>
 ENV USER docker
 ENV USERNAME "Docker User"
 
+# Change to 'root' to do tasks which would require super user privileges.
+USER root
+
 # 'bash' is a dependency for many installations.
 # 'git' is required by CircleCI for cloning repositories.
 # 'openssh' is required by CircleCI for cloning repositories through SSH.

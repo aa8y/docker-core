@@ -9,6 +9,10 @@ contexts:
     tags:
       alpine:
         run: cat /etc/alpine-release
+  gradle/5:
+    tags:
+      gradle5:
+        run: gradle --version
   jdk/7:
     tags:
       jdk7:
