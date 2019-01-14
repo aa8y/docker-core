@@ -21,6 +21,14 @@ contexts:
     tags:
       node9:
         run: node --version
+  node/10:
+    tags:
+      node10:
+        run: node --version
+  node/11:
+    tags:
+      node11:
+        run: node --version
   python/2:
     tags:
       python2:

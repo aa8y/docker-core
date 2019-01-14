@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk-alpine3.7
+FROM openjdk:8-jdk-alpine3.8
 
 MAINTAINER Arun Allamsetty <arun.allamsetty@gmail.com>
 
