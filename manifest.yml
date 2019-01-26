@@ -24,15 +24,15 @@ contexts:
   node/9:
     tags:
       node9:
-        run: node --version
+        run: node --version && npm --version
   node/10:
     tags:
       node10:
-        run: node --version
+        run: node --version && npm --version
   node/11:
     tags:
       node11:
-        run: node --version
+        run: node --version && npm --version
   python/2:
     tags:
       python2:
@@ -41,3 +41,7 @@ contexts:
     tags:
       python3:
         run: python --version
+  ubuntu:
+    tags:
+      ubuntu:
+        run: cat /etc/lsb-release

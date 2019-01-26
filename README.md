@@ -10,12 +10,14 @@ This image is inspired from `Dockerfile` for the [Instructure Core](https://gith
 
 Tags are built from various Alpine based official images.
 
-|        | Tags                 |
-|--------|----------------------|
-| Alpine | `alpine`, `latest`   |
-| Java   | `jdk7`, `jdk8`       |
-| NodeJS | `node9`              |
-| Python | `python2`, `python3` |
+|        | Tags                        |
+|--------|-----------------------------|
+| Alpine | `alpine`, `latest`          |
+| Gradle | `gradle5`                   |
+| Java   | `jdk7`, `jdk8`              |
+| NodeJS | `node9`, `node10`, `node11` |
+| Python | `python2`, `python3`        |
+| Ubuntu | `ubuntu`                    |
 
 ## Usage
 
