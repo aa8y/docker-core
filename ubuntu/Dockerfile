@@ -12,10 +12,13 @@ USER root
 ENV DEBIAN_FRONTEND=noninteractive
 # 'git' is required by CircleCI for cloning repositories.
 # 'openssh-server' is required by CircleCI for cloning repositories through SSH.
+# 'software-properties-common' lets you run 'apt-add-repository' which would probably be needed by
+#  images which use this image.
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
       git \
-      openssh-server && \
+      openssh-server \
+      software-properties-common && \
     apt-get clean && \
     rm -rf \
       /tmp/* \
