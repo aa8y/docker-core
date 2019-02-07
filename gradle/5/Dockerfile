@@ -1,4 +1,4 @@
-FROM gradle:5.1-jdk8-alpine
+FROM gradle:5.2-jdk8-alpine
 
 MAINTAINER Arun Allamsetty <arun.allamsetty@gmail.com>
 
