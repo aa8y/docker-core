@@ -1,0 +1,50 @@
+schemaVersion: "2.0.0"
+
+# Shared assertions for every aa8y/core image: the locked `docker` user,
+# APP_DIR ownership, and the bash/git/ssh tooling installed by the Dockerfile
+# boilerplate.
+
+metadataTest:
+  user: "docker"
+  envVars:
+    - key: USER
+      value: docker
+    - key: USERNAME
+      value: "Docker User"
+    - key: APP_DIR
+      value: /usr/src/app
+
+commandTests:
+  - name: "docker user has UID 9999"
+    command: "id"
+    args: ["-u", "docker"]
+    expectedOutput: ["^9999"]
+
+  - name: "docker user has GID 9999"
+    command: "id"
+    args: ["-g", "docker"]
+    expectedOutput: ["^9999"]
+
+  - name: "bash is installed"
+    command: "bash"
+    args: ["--version"]
+    expectedOutput: ["GNU bash"]
+
+  - name: "git is installed"
+    command: "git"
+    args: ["--version"]
+    expectedOutput: ["git version"]
+
+  - name: "ssh client is installed"
+    command: "ssh"
+    args: ["-V"]
+    # ssh -V writes its version banner to stderr
+    expectedError: ["OpenSSH"]
+
+fileExistenceTests:
+  - name: "APP_DIR exists and is owned by docker:docker"
+    path: "/usr/src/app"
+    shouldExist: true
+    isExecutableBy: "owner"
+    uid: 9999
+    gid: 9999

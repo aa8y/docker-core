@@ -3,45 +3,45 @@ parameters:
 templates:
   build: docker build -t {{{repository}}}:{{tag}} {{{context}}}
   push: docker push {{{repository}}}:{{tag}}
-  test: docker run --rm {{{repository}}}:{{tag}} {{{run}}}
+  test: ./script/test/{{{run}}} {{{repository}}}:{{tag}}
 contexts:
   alpine:
     tags:
       alpine:
-        run: cat /etc/alpine-release
+        run: alpine
   gradle/5:
     tags:
       gradle5:
-        run: gradle --version
+        run: gradle 5
   jdk/7:
     tags:
       jdk7:
-        run: java -version
+        run: jdk 7
   jdk/8:
     tags:
       jdk8:
-        run: java -version
+        run: jdk 8
   node/9:
     tags:
       node9:
-        run: node --version && npm --version
+        run: node 9
   node/10:
     tags:
       node10:
-        run: node --version && npm --version
+        run: node 10
   node/11:
     tags:
       node11:
-        run: node --version && npm --version
+        run: node 11
   python/2:
     tags:
       python2:
-        run: python --version
+        run: python 2
   python/3:
     tags:
       python3:
-        run: python --version
+        run: python 3
   ubuntu:
     tags:
       ubuntu:
-        run: cat /etc/lsb-release
+        run: ubuntu

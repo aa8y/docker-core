@@ -1,0 +1,7 @@
+schemaVersion: "2.0.0"
+
+commandTests:
+  - name: "alpine 3.9 base"
+    command: "cat"
+    args: ["/etc/alpine-release"]
+    expectedOutput: ["^3\\.9\\."]

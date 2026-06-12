@@ -23,6 +23,23 @@ Tags are built from various Alpine based official images.
 
 To be used as a base image for other images or as standalone images in CI environments.
 
+## Testing
+
+Image tests are defined as [container-structure-test][cst] configs under
+`script/test/`, with a thin shell wrapper per image type. Each wrapper takes the
+image reference (and, where applicable, the major version) as arguments:
+
+```sh
+brew install container-structure-test     # one-time
+
+docker build -t aa8y/core:jdk8 jdk/8
+./script/test/jdk 8 aa8y/core:jdk8
+```
+
+CI invokes the same scripts via `dave test`, driven by `manifest.yml`.
+
+[cst]: https://github.com/GoogleContainerTools/container-structure-test
+
 ## License
 
 MIT

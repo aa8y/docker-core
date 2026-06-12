@@ -1,0 +1,17 @@
+schemaVersion: "2.0.0"
+
+commandTests:
+  - name: "node major version is 11"
+    command: "node"
+    args: ["--version"]
+    expectedOutput: ["^v11\\."]
+
+  - name: "npm is installed"
+    command: "npm"
+    args: ["--version"]
+    exitCode: 0
+
+  - name: "node evaluates an expression"
+    command: "node"
+    args: ["-e", "console.log(1 + 1)"]
+    expectedOutput: ["^2"]

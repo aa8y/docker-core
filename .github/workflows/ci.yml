@@ -10,6 +10,7 @@ on:
       - '**/*.md'
 
 env:
+  CST_VERSION: 1.22.1
   DAVE_VERSION: 0.3.1
 
 jobs:
@@ -24,6 +25,16 @@ jobs:
 
       - name: Install dave
         run: npm install -g dave@"$DAVE_VERSION"
+
+      - name: Install container-structure-test
+        run: |
+          curl -fsSL -o /tmp/cst \
+            "https://github.com/GoogleContainerTools/container-structure-test/releases/download/v${CST_VERSION}/container-structure-test-linux-amd64"
+          chmod +x /tmp/cst
+          sudo mv /tmp/cst /usr/local/bin/container-structure-test
+
+      - name: Ensure test wrappers are executable
+        run: chmod +x script/test/alpine script/test/ubuntu script/test/jdk script/test/node script/test/python script/test/gradle
 
       - name: Build images
         run: dave build

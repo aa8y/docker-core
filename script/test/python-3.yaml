@@ -1,0 +1,12 @@
+schemaVersion: "2.0.0"
+
+commandTests:
+  - name: "python major version is 3"
+    command: "python"
+    args: ["-c", "import sys; print(sys.version_info[0])"]
+    expectedOutput: ["^3"]
+
+  - name: "python evaluates an expression"
+    command: "python"
+    args: ["-c", "print(1 + 1)"]
+    expectedOutput: ["^2"]
