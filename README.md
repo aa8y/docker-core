@@ -1,6 +1,6 @@
 # Docker Core
 
-[![Build Status](https://travis-ci.org/aa8y/docker-core.svg?branch=master)](https://travis-ci.org/aa8y/docker-core)
+[![CI](https://github.com/aa8y/docker-core/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/aa8y/docker-core/actions/workflows/ci.yml)
 
 This is a project which would house `Dockerfile`s for base/core images for (almost) all the images under the `aa8y/` namespace. The idea is to DRY out common steps between those images and also add steps which make the official images, from which the core images are built, more usable. Alpine Linux is the root base image of choice owing to its smaller footprint. But more conventional base images might be built if the need arises in the future.
 
