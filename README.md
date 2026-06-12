@@ -26,17 +26,18 @@ To be used as a base image for other images or as standalone images in CI enviro
 ## Testing
 
 Image tests are defined as [container-structure-test][cst] configs under
-`script/test/`, with a thin shell wrapper per image type. Each wrapper takes the
-image reference (and, where applicable, the major version) as arguments:
+`test/config/` — a shared `common.yaml` plus one file per image variant. The
+configs to apply per tag are declared in `manifest.yml` under `structureTest:`
+and run natively by `dave structure-test`:
 
 ```sh
 brew install container-structure-test     # one-time
 
-docker build -t aa8y/core:jdk8 jdk/8
-./script/test/jdk 8 aa8y/core:jdk8
+dave build
+dave structure-test
 ```
 
-CI invokes the same scripts via `dave test`, driven by `manifest.yml`.
+CI runs the same commands; see `.github/workflows/ci.yml`.
 
 [cst]: https://github.com/GoogleContainerTools/container-structure-test
 

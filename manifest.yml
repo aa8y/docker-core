@@ -3,45 +3,67 @@ parameters:
 templates:
   build: docker build -t {{{repository}}}:{{tag}} {{{context}}}
   push: docker push {{{repository}}}:{{tag}}
-  test: ./script/test/{{{run}}} {{{repository}}}:{{tag}}
+structureTest:
+  configs:
+    - test/config/common.yaml
 contexts:
   alpine:
+    structureTest:
+      configs:
+        - test/config/alpine.yaml
     tags:
       alpine:
-        run: alpine
   gradle/5:
+    structureTest:
+      configs:
+        - test/config/gradle-5.yaml
     tags:
       gradle5:
-        run: gradle 5
   jdk/7:
+    structureTest:
+      configs:
+        - test/config/jdk-7.yaml
     tags:
       jdk7:
-        run: jdk 7
   jdk/8:
+    structureTest:
+      configs:
+        - test/config/jdk-8.yaml
     tags:
       jdk8:
-        run: jdk 8
   node/9:
+    structureTest:
+      configs:
+        - test/config/node-9.yaml
     tags:
       node9:
-        run: node 9
   node/10:
+    structureTest:
+      configs:
+        - test/config/node-10.yaml
     tags:
       node10:
-        run: node 10
   node/11:
+    structureTest:
+      configs:
+        - test/config/node-11.yaml
     tags:
       node11:
-        run: node 11
   python/2:
+    structureTest:
+      configs:
+        - test/config/python-2.yaml
     tags:
       python2:
-        run: python 2
   python/3:
+    structureTest:
+      configs:
+        - test/config/python-3.yaml
     tags:
       python3:
-        run: python 3
   ubuntu:
+    structureTest:
+      configs:
+        - test/config/ubuntu.yaml
     tags:
       ubuntu:
-        run: ubuntu

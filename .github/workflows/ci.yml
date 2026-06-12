@@ -11,7 +11,7 @@ on:
 
 env:
   CST_VERSION: 1.22.1
-  DAVE_VERSION: 0.3.1
+  DAVE_VERSION: 0.4.0
 
 jobs:
   build:
@@ -33,14 +33,11 @@ jobs:
           chmod +x /tmp/cst
           sudo mv /tmp/cst /usr/local/bin/container-structure-test
 
-      - name: Ensure test wrappers are executable
-        run: chmod +x script/test/alpine script/test/ubuntu script/test/jdk script/test/node script/test/python script/test/gradle
-
       - name: Build images
         run: dave build
 
       - name: Test images
-        run: dave test
+        run: dave structure-test
 
       - name: Log in to Docker Hub
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
