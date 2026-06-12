@@ -5,7 +5,13 @@ FROM alpine:3.9
 
 ARG JDK_VERSION=8
 
-MAINTAINER Arun Allamsetty <arun.allamsetty@gmail.com>
+LABEL org.opencontainers.image.authors="https://github.com/aa8y" \
+      org.opencontainers.image.description="Base images intended to be FROM'd by aa8y/* images and used standalone in CI." \
+      org.opencontainers.image.licenses="MIT" \
+      org.opencontainers.image.source="https://github.com/aa8y/docker-core" \
+      org.opencontainers.image.title="aa8y/core" \
+      org.opencontainers.image.url="https://hub.docker.com/r/aa8y/core" \
+      org.opencontainers.image.vendor="https://github.com/aa8y"
 
 ENV USER docker
 ENV USERNAME "Docker User"
