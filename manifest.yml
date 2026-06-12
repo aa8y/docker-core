@@ -8,62 +8,61 @@ structureTest:
     - test/config/common.yaml
 contexts:
   alpine:
-    structureTest:
-      configs:
-        - test/config/alpine.yaml
+    templates:
+      build: docker build -t {{{repository}}}:{{tag}} --build-arg BASE_IMAGE={{baseImage}} {{{context}}}
     tags:
       alpine:
-  gradle/5:
-    structureTest:
-      configs:
-        - test/config/gradle-5.yaml
-    tags:
+        baseImage: alpine:3.9
+        structureTest:
+          configs:
+            - test/config/alpine.yaml
       gradle5:
-  jdk/7:
-    structureTest:
-      configs:
-        - test/config/jdk-7.yaml
+        baseImage: gradle:5.4-jdk8-alpine
+        structureTest:
+          configs:
+            - test/config/gradle-5.yaml
+      node9:
+        baseImage: node:9-alpine
+        structureTest:
+          configs:
+            - test/config/node-9.yaml
+      node10:
+        baseImage: node:10-alpine
+        structureTest:
+          configs:
+            - test/config/node-10.yaml
+      node11:
+        baseImage: node:11-alpine
+        structureTest:
+          configs:
+            - test/config/node-11.yaml
+      python2:
+        baseImage: python:2-alpine3.9
+        structureTest:
+          configs:
+            - test/config/python-2.yaml
+      python3:
+        baseImage: python:3-alpine3.9
+        structureTest:
+          configs:
+            - test/config/python-3.yaml
+  jdk/legacy:
+    templates:
+      build: docker build -t {{{repository}}}:{{tag}} --build-arg JDK_VERSION={{jdkVersion}} {{{context}}}
     tags:
       jdk7:
-  jdk/8:
-    structureTest:
-      configs:
-        - test/config/jdk-8.yaml
-    tags:
+        jdkVersion: 7
+        structureTest:
+          configs:
+            - test/config/jdk-7.yaml
       jdk8:
-  node/9:
-    structureTest:
-      configs:
-        - test/config/node-9.yaml
-    tags:
-      node9:
-  node/10:
-    structureTest:
-      configs:
-        - test/config/node-10.yaml
-    tags:
-      node10:
-  node/11:
-    structureTest:
-      configs:
-        - test/config/node-11.yaml
-    tags:
-      node11:
-  python/2:
-    structureTest:
-      configs:
-        - test/config/python-2.yaml
-    tags:
-      python2:
-  python/3:
-    structureTest:
-      configs:
-        - test/config/python-3.yaml
-    tags:
-      python3:
+        jdkVersion: 8
+        structureTest:
+          configs:
+            - test/config/jdk-8.yaml
   ubuntu:
-    structureTest:
-      configs:
-        - test/config/ubuntu.yaml
     tags:
       ubuntu:
+        structureTest:
+          configs:
+            - test/config/ubuntu.yaml

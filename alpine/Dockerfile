@@ -1,4 +1,7 @@
-FROM alpine:3.9
+# Used by every Alpine-based tag (alpine, gradle5, node9/10/11, python2/3).
+# Switch base images via `--build-arg BASE_IMAGE=...`; see manifest.yml.
+ARG BASE_IMAGE=alpine:3.9
+FROM ${BASE_IMAGE}
 
 MAINTAINER Arun Allamsetty <arun.allamsetty@gmail.com>
 
@@ -20,7 +23,7 @@ RUN apk add --no-cache --update \
     rm -rf /var/cache/apk/*
 
 # Create a 'docker' user because we might not want to run everything as 'root'. Use 9999 as the ID
-# to keep it specific and away from the IDs in the host system. Also, lock the user to avoid 
+# to keep it specific and away from the IDs in the host system. Also, lock the user to avoid
 # unwanted logins into a Docker container using the 'docker' user as a security measure.
 RUN addgroup -g 9999 $USER && \
     adduser -u 9999 -G $USER -g "$USERNAME" -s /bin/bash -D $USER && \
