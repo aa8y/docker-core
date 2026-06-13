@@ -21,6 +21,11 @@ contexts:
         structureTest:
           configs:
             - test/config/gradle-5.yaml
+      jdk21:
+        baseImage: eclipse-temurin:21-jdk-alpine
+        structureTest:
+          configs:
+            - test/config/jdk-21.yaml
       node9:
         baseImage: node:9-alpine
         structureTest:

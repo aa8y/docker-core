@@ -1,0 +1,31 @@
+schemaVersion: "2.0.0"
+
+metadataTest:
+  envVars:
+    - key: JAVA_HOME
+      value: /opt/java/openjdk
+
+commandTests:
+  - name: "java major version is 21"
+    command: "java"
+    args: ["-version"]
+    # java -version writes to stderr
+    expectedError: ['"21\.']
+
+  - name: "javac major version is 21"
+    command: "javac"
+    args: ["-version"]
+    # javac -version writes to stdout from JDK 9 onward
+    expectedOutput: ['^javac 21\.']
+
+  - name: "java is on PATH"
+    command: "sh"
+    args: ["-c", "command -v java"]
+    exitCode: 0
+
+  - name: "compile and run a HelloWorld class"
+    command: "sh"
+    args:
+      - "-c"
+      - 'cd "$(mktemp -d)" && printf ''public class Hello { public static void main(String[] a) { System.out.println("ok"); } }'' > Hello.java && javac Hello.java && java Hello'
+    expectedOutput: ["^ok"]
